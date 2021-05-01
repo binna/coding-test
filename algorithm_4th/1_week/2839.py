@@ -1,14 +1,18 @@
 inputValue = int(input())
-cnt = 0
+flag = True
+result = -1
 
-if inputValue % 3 != 0:
-    cnt = int(inputValue / 5)
-    inputValue %= 5
-print(inputValue)
-if inputValue % 3 == 0:
-    inputValue / 3
-else:
-    cnt = -1
-
-
-print(cnt)
+if inputValue / 5 > 0:
+    for i in range(int(inputValue / 5), 0, -1):
+        if inputValue - (i * 5) == 0:
+            result = i
+            flag = False
+            break
+        elif (inputValue - (i * 5)) % 3 == 0:
+            result = int((inputValue - (i * 5)) / 3 + i)
+            flag = False
+            break
+    if flag:
+        if inputValue % 3 == 0:
+            result = int(inputValue / 3)
+print(result)
